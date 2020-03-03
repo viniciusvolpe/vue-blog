@@ -5,10 +5,11 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      title: "Vue ninjas"
-    };
+  props: {
+    title: {
+      type: String,
+      required: true
+    }
   }
 };
 </script>
