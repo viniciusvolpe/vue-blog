@@ -1,9 +1,9 @@
- <template>
+<template>
   <div>
     <!-- <app-header v-bind:title="title" @changeTitle="updateTitle($event)" />
     <app-ninjas v-bind:ninjas="ninjas" />
     <app-footer v-bind:title="title" />-->
-    <form-helper>
+    <!-- <form-helper>
       <div slot="form-header">
         <h3>Form header</h3>
         <p>Form info</p>
@@ -15,7 +15,12 @@
       <div slot="form-controls">
         <button type="submit" @click="handleSubmit">Submit</button>
       </div>
-    </form-helper>
+    </form-helper>-->
+    <keep-alive>
+      <component :is="component" />
+    </keep-alive>
+    <button @click="showForm('one')">Form one</button>
+    <button @click="showForm('two')">Form two</button>
   </div>
 </template>
 
@@ -24,13 +29,17 @@ import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Ninjas from "./components/Ninjas.vue";
 import FormHelper from "./components/FormHelper.vue";
+import FormOne from "./components/FormOne.vue";
+import FormTwo from "./components/FormTwo.vue";
 
 export default {
   components: {
     "app-header": Header,
     "app-footer": Footer,
     "app-ninjas": Ninjas,
-    "form-helper": FormHelper
+    "form-helper": FormHelper,
+    "form-one": FormOne,
+    "form-two": FormTwo
   },
   data() {
     return {
@@ -42,7 +51,8 @@ export default {
         { name: "Kami", speciality: "Webpack", show: false },
         { name: "Yoshi", speciality: "Data Diggin", show: false }
       ],
-      title: "Vue ninjas"
+      title: "Vue ninjas",
+      component: "form-one"
     };
   },
   methods: {
@@ -51,10 +61,12 @@ export default {
     },
     handleSubmit() {
       console.log("submitted");
+    },
+    showForm(form) {
+      this.component = `form-${form}`;
     }
   }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
