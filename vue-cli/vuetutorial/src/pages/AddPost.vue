@@ -3,30 +3,31 @@
     <form>
       <form-group title="Content">
         <label for="title">Title</label>
-        <input type="text" name="title" />
+        <input type="text" id="title" />
         <label for="body">Body</label>
-        <textarea name="body" rows="30"></textarea>
+        <textarea id="body" rows="30"></textarea>
         <label for="image">Image URL</label>
-        <input type="text" name="image" v-model="post.image" />
+        <input type="text" id="image" v-model="post.image" />
       </form-group>
       <form-group title="Category">
         <div class="categories">
           <label
-            for="categories"
             v-for="(category, index) in categories"
             :key="index"
+            :for="`category-${category}`"
           >
             <input
               type="checkbox"
-              :value="category"
               v-model="post.categories"
+              :value="category"
+              :id="`category-${category}`"
             />
             {{ category }}
           </label>
         </div>
       </form-group>
       <form-group title="Author">
-        <select name="author" v-model="post.author">
+        <select id="author" v-model="post.author">
           <option v-for="(author, index) in authors" :key="index">{{
             author
           }}</option>
