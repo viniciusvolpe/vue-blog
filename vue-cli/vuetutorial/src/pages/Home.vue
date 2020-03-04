@@ -1,19 +1,20 @@
 <template>
-  <main>
+  <page>
     <page-title>Vue Blog</page-title>
     <subtitle>by Vinicius</subtitle>
     <post-filter :filter="filter" />
     <posts :posts="posts" />
-  </main>
+  </page>
 </template>
 <script>
-import { Filter, Posts, Subtitle, Title } from "../components";
+import { Filter, Posts, Subtitle, Title, Page } from "../components";
 export default {
   components: {
     "post-filter": Filter,
     "page-title": Title,
     subtitle: Subtitle,
-    posts: Posts
+    posts: Posts,
+    page: Page
   },
   data() {
     return {
@@ -48,8 +49,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-main {
-  padding: 0 10px;
-}
-</style>

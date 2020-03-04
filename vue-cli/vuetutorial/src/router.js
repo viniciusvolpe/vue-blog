@@ -1,6 +1,9 @@
 import VueRouter from "vue-router";
-import { Home } from "./pages";
+import { Home, AddPost } from "./pages";
 
 export default new VueRouter({
-  routes: [{ path: "/", component: Home }]
+  routes: [
+    { path: "/", component: Home },
+    { path: "/add", component: AddPost }
+  ]
 });

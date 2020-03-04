@@ -8,7 +8,8 @@
   </div>
 </template>
 <script>
-import { Subtitle, Title } from ".";
+import Title from "./Title.vue";
+import Subtitle from "./Subtitle.vue";
 export default {
   components: {
     subtitle: Subtitle,

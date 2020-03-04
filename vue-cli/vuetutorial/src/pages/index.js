@@ -1,3 +1,4 @@
 import Home from "./Home.vue";
+import AddPost from "./AddPost.vue";
 
-export { Home };
+export { Home, AddPost };

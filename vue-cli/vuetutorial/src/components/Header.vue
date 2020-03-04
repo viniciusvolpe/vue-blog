@@ -8,7 +8,6 @@
 nav {
   display: flex;
   justify-content: space-between;
-  /* margin: -8px; */
 }
 a {
   text-decoration: none;
@@ -20,7 +19,7 @@ a {
 }
 a:not(.home) {
   color: #444;
-  border: 1px solid #a4ceff;
+  border: 2px solid #a4ceff;
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
