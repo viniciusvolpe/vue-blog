@@ -1,45 +1,22 @@
 <template>
   <main>
-    <h1>Vue Blog</h1>
-    <h2>by Vinicius</h2>
-    <section class="filter">
-      <input
-        type="text"
-        v-model.lazy="filter.search"
-        @change="cleanCategoryFilter"
-        placeholder="Search for a term and type enter"
-      />
-      <ul>
-        <li
-          v-for="(category, index) in categories"
-          :key="index"
-          @click="setCategory(category)"
-          :class="{ active: category === filter.category }"
-        >
-          {{ category }}
-        </li>
-      </ul>
-    </section>
-    <section>
-      <div v-for="(post, index) in posts" :key="index">
-        <router-link :to="`/post/${post.id}`">
-          <div class="post">
-            <img :src="post.image" />
-            <div>
-              <h1 v-text="post.title" />
-              <h2 v-text="post.author" />
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </section>
+    <page-title>Vue Blog</page-title>
+    <subtitle>by Vinicius</subtitle>
+    <post-filter :filter="filter" />
+    <posts :posts="posts" />
   </main>
 </template>
 <script>
+import { Filter, Posts, Subtitle, Title } from "../components";
 export default {
+  components: {
+    "post-filter": Filter,
+    "page-title": Title,
+    subtitle: Subtitle,
+    posts: Posts
+  },
   data() {
     return {
-      categories: ["Basics", "State management", "Libraries"],
       filter: {
         search: "",
         category: ""
@@ -56,14 +33,6 @@ export default {
         }
       ]
     };
-  },
-  methods: {
-    setCategory(category) {
-      this.filter = { category };
-    },
-    cleanCategoryFilter() {
-      this.filter.category = null;
-    }
   },
   computed: {
     posts() {
@@ -82,51 +51,5 @@ export default {
 <style scoped>
 main {
   padding: 0 10px;
-}
-h1 {
-  margin-bottom: 0px;
-}
-h2 {
-  margin-top: 5px;
-  font-size: 18px;
-  color: #b3b3b3;
-}
-.filter {
-  display: flex;
-  flex-direction: column;
-}
-input {
-  padding: 10px;
-  border: 0;
-  border-bottom: 1px solid #b3b3b3;
-  width: 90%;
-  margin: 0 auto;
-}
-ul {
-  display: flex;
-  justify-content: space-around;
-}
-li {
-  list-style: none;
-  padding: 10px;
-  cursor: pointer;
-}
-.active {
-  font-weight: bold;
-  border-bottom: 1px solid black;
-}
-a {
-  text-decoration: none;
-  color: unset;
-}
-.post {
-  display: flex;
-  background: #f9f9f9;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-.post img {
-  max-width: 60%;
-  margin-right: 20px;
 }
 </style>
