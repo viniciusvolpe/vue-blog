@@ -83,7 +83,11 @@ export default {
 main {
   padding: 0 10px;
 }
+h1 {
+  margin-bottom: 0px;
+}
 h2 {
+  margin-top: 5px;
   font-size: 18px;
   color: #b3b3b3;
 }
@@ -109,7 +113,7 @@ li {
 }
 .active {
   font-weight: bold;
-  text-decoration: underline;
+  border-bottom: 1px solid black;
 }
 a {
   text-decoration: none;

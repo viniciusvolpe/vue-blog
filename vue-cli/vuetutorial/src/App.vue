@@ -17,6 +17,7 @@ export default {
 html,
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 main {
   max-width: 800px;
