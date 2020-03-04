@@ -1,14 +1,14 @@
 <template>
-  <header>
+  <nav>
     <router-link class="home" to="/">Home</router-link>
     <router-link to="/add">New Post</router-link>
-  </header>
+  </nav>
 </template>
 <style scoped>
-header {
+nav {
   display: flex;
   justify-content: space-between;
-  margin: -8px;
+  /* margin: -8px; */
 }
 a {
   text-decoration: none;
