@@ -8,6 +8,7 @@
 </template>
 <script>
 import { Filter, Posts, Subtitle, Title, Page } from "../components";
+import { api } from "../constants";
 export default {
   components: {
     "post-filter": Filter,
@@ -22,18 +23,19 @@ export default {
         search: "",
         category: ""
       },
-      postList: [
-        {
-          id: "asderhfgfqer",
-          title: "How to Vue",
-          body: "How to create a vue application",
-          categories: ["Basics"],
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1920px-Vue.js_Logo_2.svg.png",
-          author: "Vinicius"
-        }
-      ]
+      postList: []
     };
+  },
+  created() {
+    this.$http.get(`${api.database}/posts.json`).then(
+      ({ body }) =>
+        (this.postList = body
+          ? Object.entries(body).map(([id, post]) => ({
+              id,
+              ...post
+            }))
+          : [])
+    );
   },
   computed: {
     posts() {

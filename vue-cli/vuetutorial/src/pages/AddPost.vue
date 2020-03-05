@@ -57,9 +57,12 @@ export default {
   },
   methods: {
     save() {
-      const { image = data.defaultImage, ...post } = this.post;
+      const { image, ...post } = this.post;
       this.$http
-        .post(`${api.database}/posts.json`, { ...post, image })
+        .post(`${api.database}/posts.json`, {
+          ...post,
+          image: image || data.defaultImage
+        })
         .then(({ body: { name } }) => this.$router.push(`/post/${name}`));
     }
   },
