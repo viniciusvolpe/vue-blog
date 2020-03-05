@@ -1,7 +1,9 @@
 <template>
   <div class="post">
-    <div class="image" :style="{background: `url('${post.image}') center no-repeat`}"></div>
-    <!-- <img :src="post.image" /> -->
+    <div
+      class="image"
+      :style="{ background: `url('${post.image}') center no-repeat` }"
+    ></div>
     <div>
       <post-title>{{ post.title }}</post-title>
       <subtitle>{{ post.author }}</subtitle>
@@ -29,6 +31,11 @@ export default {
   display: flex;
   background: #f9f9f9;
   margin-bottom: 20px;
+}
+@media screen and (max-width: 768px) {
+  .post {
+    flex-direction: column;
+  }
 }
 .image {
   min-width: 400px;
