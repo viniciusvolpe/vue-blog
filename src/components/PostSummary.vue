@@ -32,15 +32,21 @@ export default {
   background: #f9f9f9;
   margin-bottom: 20px;
 }
-@media screen and (max-width: 768px) {
-  .post {
-    flex-direction: column;
-  }
-}
+
 .image {
   min-width: 400px;
   height: 200px;
   margin-right: 20px;
   background-size: cover !important;
+}
+
+@media screen and (max-width: 425px) {
+  .post {
+    flex-direction: column;
+  }
+  .image {
+    min-width: unset !important;
+    width: 100%;
+  }
 }
 </style>
