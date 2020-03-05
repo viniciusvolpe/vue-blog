@@ -13,3 +13,10 @@ new Vue({
   router,
   store
 });
+
+if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+  navigator.serviceWorker
+    .register("/sw.js")
+    .then(res => console.log("sw registered", res))
+    .catch(err => console.error(err));
+}

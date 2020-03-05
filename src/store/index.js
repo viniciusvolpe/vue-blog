@@ -24,10 +24,7 @@ export default new Vuex.Store({
   },
   getters: {
     getById(state) {
-      return id => {
-        console.log(id, state);
-        return state.posts.find(post => post.id === id);
-      };
+      return id => state.posts.find(post => post.id === id);
     }
   },
   actions: {

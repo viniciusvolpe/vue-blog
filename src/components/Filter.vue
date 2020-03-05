@@ -1,6 +1,6 @@
 <template>
   <section class="filter">
-    <label for="serach">Search field</label>
+    <label for="search">Search field</label>
     <input
       type="text"
       v-model.lazy="filter.search"
@@ -14,7 +14,9 @@
         :key="index"
         @click="setCategory(category)"
         :class="{ active: category === filter.category }"
-      >{{ category }}</li>
+      >
+        {{ category }}
+      </li>
     </ul>
   </section>
 </template>
@@ -46,7 +48,9 @@ export default {
   flex-direction: column;
 }
 label {
-  display: none;
+  position: absolute;
+  left: -100px;
+  /* visibility: hidden; */
 }
 input {
   padding: 10px;
