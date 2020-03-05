@@ -7,6 +7,6 @@
 h2 {
   margin-top: 5px;
   font-size: 18px;
-  color: #b3b3b3;
+  color: #5a5a5a;
 }
 </style>

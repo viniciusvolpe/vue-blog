@@ -5,5 +5,6 @@ import Subtitle from "./Subtitle.vue";
 import Title from "./Title.vue";
 import Page from "./Page.vue";
 import FormGroup from "./FormGroup.vue";
+import EmptyState from "./EmptyState.vue";
 
-export { Header, Filter, Posts, Subtitle, Title, Page, FormGroup };
+export { Header, Filter, Posts, Subtitle, Title, Page, FormGroup, EmptyState };
