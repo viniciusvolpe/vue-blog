@@ -3,19 +3,15 @@
     <form>
       <form-group title="Content">
         <label for="title">Title</label>
-        <input type="text" id="title" />
+        <input type="text" id="title" v-model="post.title" />
         <label for="body">Body</label>
-        <textarea id="body" rows="30"></textarea>
+        <textarea id="body" rows="30" v-model="post.body"></textarea>
         <label for="image">Image URL</label>
         <input type="text" id="image" v-model="post.image" />
       </form-group>
       <form-group title="Category">
         <div class="categories">
-          <label
-            v-for="(category, index) in categories"
-            :key="index"
-            :for="`category-${category}`"
-          >
+          <label v-for="(category, index) in categories" :key="index" :for="`category-${category}`">
             <input
               type="checkbox"
               v-model="post.categories"
@@ -28,9 +24,11 @@
       </form-group>
       <form-group title="Author">
         <select id="author" v-model="post.author">
-          <option v-for="(author, index) in authors" :key="index">{{
+          <option v-for="(author, index) in authors" :key="index">
+            {{
             author
-          }}</option>
+            }}
+          </option>
         </select>
       </form-group>
       <button @click.prevent="save">Submit</button>
@@ -40,6 +38,7 @@
 <script>
 import { Page, FormGroup } from "../components";
 import { categories, authors } from "../mixins";
+import { api, data } from "../constants";
 export default {
   components: {
     page: Page,
@@ -50,13 +49,19 @@ export default {
       post: {
         title: "",
         body: "",
+        image: "",
         categories: [],
         author: "Vinicius"
       }
     };
   },
   methods: {
-    save() {}
+    save() {
+      const { image = data.defaultImage, ...post } = this.post;
+      this.$http
+        .post(`${api.database}/posts.json`, { ...post, image })
+        .then(({ body: { name } }) => this.$router.push(`/post/${name}`));
+    }
   },
   mixins: [categories, authors]
 };
