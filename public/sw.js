@@ -1,10 +1,6 @@
 const cacheName = "vue-blog";
 
 self.addEventListener("install", event => {
-  console.log("sw installed", event);
-});
-
-self.addEventListener("activate", event => {
   event.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
