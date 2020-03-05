@@ -1,10 +1,10 @@
-# vuetutorial
+# vue-blog
 
 > A Vue.js project
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
