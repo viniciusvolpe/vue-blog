@@ -35,7 +35,7 @@ export default {
 
 .image {
   min-width: 400px;
-  height: 200px;
+  min-height: 200px;
   margin-right: 20px;
   background-size: cover !important;
 }
