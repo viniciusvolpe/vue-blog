@@ -6,10 +6,17 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import { Header } from "./components";
 export default {
   components: {
     "app-header": Header
+  },
+  methods: {
+    ...mapActions(["load"])
+  },
+  created() {
+    this.load();
   }
 };
 </script>

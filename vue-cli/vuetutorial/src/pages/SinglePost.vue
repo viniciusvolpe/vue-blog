@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <div class="image" :style="{ background: `url('${post.image}') center no-repeat` }" />
+  <div v-if="post">
+    <div
+      class="image"
+      :style="{ background: `url('${post.image}') center no-repeat` }"
+    />
     <page class="post">
       <post-title>{{ post.title }}</post-title>
       <subtitle>by {{ post.author }}</subtitle>
@@ -18,20 +21,13 @@ export default {
     "post-title": Title,
     subtitle: Subtitle
   },
-  data() {
-    return {
-      post: {}
-    };
-  },
-  created() {
-    this.$http
-      .get(`${api.database}/posts/${this.$route.params.id}.json`)
-      .then(({ body }) => (this.post = body));
-  },
   computed: {
     categories() {
       const { categories = [] } = this.post;
       return categories.join(", ").toLowerCase();
+    },
+    post() {
+      return this.$store.getters.getById(this.$route.params.id);
     }
   }
 };

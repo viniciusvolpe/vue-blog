@@ -31,7 +31,8 @@ export default {
   methods: {
     setCategory(category) {
       this.filter.search = "";
-      this.filter.category = category;
+      this.filter.category =
+        this.filter.category === category ? null : category;
     },
     cleanCategoryFilter() {
       this.filter.category = null;
