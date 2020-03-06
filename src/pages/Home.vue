@@ -38,17 +38,9 @@ export default {
   methods: {
     ...mapActions({ filterPosts: "filter" })
   },
-  computed: mapState({
-    posts(state) {
-      return state.filteredPosts;
-    }
-  }),
-  watch: {
-    filter: {
-      handler(value) {
-        this.filterPosts(value);
-      },
-      deep: true
+  computed: {
+    posts() {
+      return this.$store.getters.filter(this.filter);
     }
   }
 };

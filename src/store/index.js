@@ -6,8 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    posts: [],
-    filteredPosts: []
+    posts: []
   },
   mutations: {
     set(state, posts) {
@@ -16,33 +15,30 @@ export default new Vuex.Store({
         ...post
       }));
       state.posts = postsList;
-      state.filteredPosts = postsList;
     },
-    filter(state, filteredPosts) {
-      state.filteredPosts = filteredPosts;
+    push(state, post) {
+      state.posts.push(post);
     }
   },
   getters: {
     getById(state) {
       return id => state.posts.find(post => post.id === id);
+    },
+    filter(state) {
+      return ({ search, category }) => {
+        if (category)
+          return state.posts.filter(({ categories }) =>
+            (categories || []).includes(category)
+          );
+        return state.posts.filter(({ title, author }) =>
+          `${title} ${author}`.toLowerCase().includes(search.toLowerCase())
+        );
+      };
     }
   },
   actions: {
     load({ commit }) {
       postsService.load().then(posts => commit("set", posts));
-    },
-    filter({ commit, state }, { search, category }) {
-      if (category)
-        return commit(
-          "filter",
-          state.posts.filter(({ categories }) => categories.includes(category))
-        );
-      commit(
-        "filter",
-        state.posts.filter(({ title, author }) =>
-          `${title} ${author}`.toLowerCase().includes(search.toLowerCase())
-        )
-      );
     }
   }
 });

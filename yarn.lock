@@ -5528,6 +5528,11 @@ vue-loader@^13.0.5:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
+vue-navigator-online@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/vue-navigator-online/-/vue-navigator-online-0.0.2.tgz#97fb57f4beea7f44a156395acb5b792548b91b62"
+  integrity sha512-VKBdXW/KaY0ynms8CEuRQwBv1PChMTLo/J/5DMmtLUiPClcHFD2PMdOMDoSNuCEIbcq23ITBLIBNltIYLWCxZw==
+
 vue-resource@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.5.1.tgz#0f3d685e3254d21800bebd966edcf56c34b3b6e4"

@@ -1,10 +1,24 @@
 <template>
-  <nav>
-    <router-link class="home" to="/">Home</router-link>
-    <router-link to="/add">New Post</router-link>
-  </nav>
+  <header>
+    <nav>
+      <router-link class="home" to="/">Home</router-link>
+      <router-link to="/add" v-if="isOnline">New Post</router-link>
+    </nav>
+    <span v-if="!isOnline">Connection lost :(</span>
+  </header>
 </template>
 <style scoped>
+header {
+  display: flex;
+  flex-direction: column;
+}
+span {
+  text-align: center;
+  background: #a4ceff;
+  padding: 3px;
+  border-radius: 2px;
+  margin-top: 2px;
+}
 nav {
   display: flex;
   justify-content: space-between;

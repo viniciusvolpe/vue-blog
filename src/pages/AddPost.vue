@@ -11,7 +11,11 @@
       </form-group>
       <form-group title="Category">
         <div class="categories">
-          <label v-for="(category, index) in categories" :key="index" :for="`category-${category}`">
+          <label
+            v-for="(category, index) in categories"
+            :key="index"
+            :for="`category-${category}`"
+          >
             <input
               type="checkbox"
               v-model="post.categories"
@@ -25,9 +29,7 @@
       <form-group title="Author">
         <select id="author" v-model="post.author">
           <option v-for="(author, index) in authors" :key="index">
-            {{
-            author
-            }}
+            {{ author }}
           </option>
         </select>
       </form-group>
@@ -36,6 +38,7 @@
   </page>
 </template>
 <script>
+import { mapMutations } from "vuex";
 import { Page, FormGroup } from "../components";
 import { categories, authors } from "../mixins";
 import { api, data } from "../constants";
@@ -57,14 +60,19 @@ export default {
   },
   methods: {
     save() {
-      const { image, ...post } = this.post;
+      const { image: selectedImage, ...post } = this.post;
+      const image = selectedImage || data.defaultImage;
       this.$http
         .post(`${api.database}/posts.json`, {
           ...post,
-          image: image || data.defaultImage
+          image
         })
-        .then(({ body: { name } }) => this.$router.push(`/post/${name}`));
-    }
+        .then(({ body: { name } }) => {
+          this.push({ id: name, image, ...post });
+          this.$router.push(`/post/${name}`);
+        });
+    },
+    ...mapMutations(["push"])
   },
   mixins: [categories, authors]
 };

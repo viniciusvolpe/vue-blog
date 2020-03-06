@@ -18,9 +18,8 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("fetch", event => {
-  console.log(event.request.url);
+  if (event.request.method !== "GET") return;
   if (event.request.url.match("vuetutorial-34ed3")) {
-    console.log("data");
     event.respondWith(
       caches.open(dataCache).then(cache => {
         return fetch(event.request)
@@ -32,7 +31,6 @@ self.addEventListener("fetch", event => {
       })
     );
   } else {
-    console.log("assets");
     event.respondWith(
       caches.open(assetCache).then(cache => {
         return cache.match(event.request).then(response => {

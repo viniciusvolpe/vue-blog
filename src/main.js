@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueResource from "vue-resource";
+import VueOnlinePlugin from "vue-navigator-online";
 
+Vue.use(VueOnlinePlugin);
 Vue.use(VueResource);
 
 import store from "./store";
