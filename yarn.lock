@@ -1151,6 +1151,11 @@ chownr@^1.0.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==
 
+chunkhash-replace-webpack-plugin@^0.0.24:
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/chunkhash-replace-webpack-plugin/-/chunkhash-replace-webpack-plugin-0.0.24.tgz#6189daf034fe4c67e09ae847934971e62de8104f"
+  integrity sha512-a7ju5Ac87bjP8CMUyCIxnfTFRtQ3atH1ooMZwXKX615ClDUE3M55aKqrr35eXSZABuoL+jajkMXv5fh4+Q8TfQ==
+
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/cipher-base/-/cipher-base-1.0.4.tgz#8760e4ecc272f4c363532f926d874aae2c1397de"

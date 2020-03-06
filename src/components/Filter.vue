@@ -50,7 +50,6 @@ export default {
 label {
   position: absolute;
   left: -100px;
-  /* visibility: hidden; */
 }
 input {
   padding: 10px;
@@ -69,7 +68,7 @@ li {
   cursor: pointer;
 }
 .active {
-  font-weight: bold;
+  font-weight: bolder;
   border-bottom: 1px solid black;
 }
 </style>
